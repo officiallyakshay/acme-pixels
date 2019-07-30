@@ -3,7 +3,14 @@
 <head>
 
 	<style>
-		
+		.row {
+			display: flex;
+		}
+		.cell {
+			width: 3rem;
+			height: 3rem;
+			border: solid 1px black;
+		}
 	</style>
 
 </head>
@@ -26,9 +33,52 @@
 		</div>
 	</form>
 
+	<div id='grid'>
+		<div class='row'>
+			<div class='cell'>1</div>
+			<div class='cell'>2</div>
+			<div class='cell'>3</div>
+		</div>
+	</div>
+	<div id='grid'>
+		<div class='row'>
+			<div class='cell'>1</div>
+			<div class='cell'>2</div>
+			<div class='cell'>3</div>
+		</div>
+	</div>
+	<div id='grid'>
+		<div class='row'>
+			<div class='cell'>1</div>
+			<div class='cell'>2</div>
+			<div class='cell'>3</div>
+		</div>
+	</div>
+
+
 	<script>
+
+		function generateNxN(n) {
+			const rows = [];
+			for (let i = 0; i < n; i++) {
+				const row = [];
+				rows.push(row);
+				for (let j = 0; j < n; j++) {
+					row.push(0)
+				}
+			}
+			return rows;
+		}
+
+		const data = generateNxN(3);
+
+		const render = () => {
+			
+		}
+		console.log(data);
 		
 	</script>
+
 
 </body>
 </html>

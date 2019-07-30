@@ -58,7 +58,7 @@
 
 	<script>
 
-		function generateNxN(n) {
+		function generateGrid(n) {
 			const rows = [];
 			for (let i = 0; i < n; i++) {
 				const row = [];
@@ -70,10 +70,27 @@
 			return rows;
 		}
 
-		const data = generateNxN(3);
+		const generateHTML = (rows) => {
+			// return rows.map(row => `
+			// 	<div class='row'
+			// 	${ row.map( cell => `<div class='cell'>${ cell }</div>`).join('')}
+			// 	</div>
+			// 	`).join('');
+		}
+
+		const data = generateGrid(3);
+		const grid = document.querySelector('#grid');
+
+
+		grid.addEventListener('click', (ev) => {
+
+		});
+
+
 
 		const render = () => {
-			
+			// const html = generateHTML(data);
+			// grid.innerHTML = html;
 		}
 		console.log(data);
 		

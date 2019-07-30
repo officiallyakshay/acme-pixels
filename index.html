@@ -11,6 +11,9 @@
 			height: 3rem;
 			border: solid 1px black;
 		}
+		.red {
+			background-color: red;
+		}
 	</style>
 
 </head>
@@ -54,19 +57,23 @@
 		generatedGrid = generateGrid(4, 5);
 				
 		const render = () => {
-        const renderRows = generatedGrid.map((row) => {
-					return `<div> ${row.map((cell) => {
-						return `<div> ${cell} </div>`
-        	}).join("")} </div>`
-        }).join("");
-				grid.innerHTML = renderRows;
+      const renderRows = generatedGrid.map((row) => {
+				return `<div> ${row.map((cell) => {
+					return `<div> ${cell} </div>`
+      	}).join("")} </div>`
+      }).join("");
+			grid.innerHTML = renderRows;
 		}
 
 		grid.addEventListener('click', (ev) => {
-
+			const row = [...ev.target.parentNode.children].indexOf(ev.target);
+			const column = [...ev.target.parentNode.parentNode.children].indexOf(ev.target);
+			console.log(row);
+			console.log(column);
+			ev.target.classList.toggle('red');
 		});
 
-		render ();
+		render();
 		
 	</script>
 

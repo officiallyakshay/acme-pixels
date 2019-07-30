@@ -3,10 +3,10 @@
 <head>
 
 	<style>
-		.row {
+		#grid {
 			display: flex;
 		}
-		.cell {
+		#grid > div > div {
 			width: 3rem;
 			height: 3rem;
 			border: solid 1px black;
@@ -33,66 +33,40 @@
 		</div>
 	</form>
 
-	<div id='grid'>
-		<div class='row'>
-			<div class='cell'>1</div>
-			<div class='cell'>2</div>
-			<div class='cell'>3</div>
-		</div>
+	<div id='grid'>	
 	</div>
-	<div id='grid'>
-		<div class='row'>
-			<div class='cell'>1</div>
-			<div class='cell'>2</div>
-			<div class='cell'>3</div>
-		</div>
-	</div>
-	<div id='grid'>
-		<div class='row'>
-			<div class='cell'>1</div>
-			<div class='cell'>2</div>
-			<div class='cell'>3</div>
-		</div>
-	</div>
-
 
 	<script>
 
-		function generateGrid(n) {
+		function generateGrid(r, c) {
 			const rows = [];
-			for (let i = 0; i < n; i++) {
+			for (let i = 0; i < r; i++) {
 				const row = [];
 				rows.push(row);
-				for (let j = 0; j < n; j++) {
+				for (let j = 0; j < c; j++) {
 					row.push(0)
 				}
 			}
 			return rows;
 		}
-
-		const generateHTML = (rows) => {
-			// return rows.map(row => `
-			// 	<div class='row'
-			// 	${ row.map( cell => `<div class='cell'>${ cell }</div>`).join('')}
-			// 	</div>
-			// 	`).join('');
+		
+		const grid = document.getElementById("grid");
+		generatedGrid = generateGrid(4, 5);
+				
+		const render = () => {
+        const renderRows = generatedGrid.map((row) => {
+					return `<div> ${row.map((cell) => {
+						return `<div> ${cell} </div>`
+        	}).join("")} </div>`
+        }).join("");
+				grid.innerHTML = renderRows;
 		}
-
-		const data = generateGrid(3);
-		const grid = document.querySelector('#grid');
-
 
 		grid.addEventListener('click', (ev) => {
 
 		});
 
-
-
-		const render = () => {
-			// const html = generateHTML(data);
-			// grid.innerHTML = html;
-		}
-		console.log(data);
+		render ();
 		
 	</script>
 

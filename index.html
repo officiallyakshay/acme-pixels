@@ -11,6 +11,11 @@
 			height: 3rem;
 			border: solid 1px black;
 		}
+		#colorButtons > div {
+			width: 5px;
+			height: 5px;
+			border: solid 1px black;			
+		}
 		.red {
 			background-color: red;
 		}
@@ -36,18 +41,32 @@
 		</div>
 	</form>
 
+	<div id='colorButtons'>
+	</div>
+	
 	<div id='grid'>	
 	</div>
-
+	
 	<script>
 
+		const colors = ["red", "blue", "green", "yellow", "dodgerBlue"];
+
+		const colorButtons = document.getElementById("colorButtons");
+		
+		function renderColorButtons () {
+			colorButtons.innerHTML = colors.map((color) => {
+				return `<div> </div>`}).join('');
+		}
+
+		renderColorButtons();
+		
 		function generateGrid(r, c) {
 			const rows = [];
 			for (let i = 0; i < r; i++) {
 				const row = [];
 				rows.push(row);
 				for (let j = 0; j < c; j++) {
-					row.push(0)
+					row.push('')
 				}
 			}
 			return rows;
@@ -66,10 +85,8 @@
 		}
 
 		grid.addEventListener('click', (ev) => {
-			const row = [...ev.target.parentNode.children].indexOf(ev.target);
-			const column = [...ev.target.parentNode.parentNode.children].indexOf(ev.target);
-			console.log(row);
-			console.log(column);
+			const column = [...ev.target.parentNode.children].indexOf(ev.target);
+			const row = [...ev.target.parentNode.parentNode.children].indexOf(ev.target.parentNode);
 			ev.target.classList.toggle('red');
 		});
 

@@ -11,6 +11,9 @@
 			height: 3rem;
 			border: solid 1px black;
 		}
+		#colorButtons {
+			display: flex;
+		}
 		#colorButtons > div {
 			width: 5px;
 			height: 5px;
@@ -55,7 +58,7 @@
 		
 		function renderColorButtons () {
 			colorButtons.innerHTML = colors.map((color) => {
-				return `<div> </div>`}).join('');
+				return `<div style='background-color:${color}'> </div>`}).join('');
 		}
 
 		renderColorButtons();
